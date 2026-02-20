@@ -1,0 +1,332 @@
+
+:root {
+    --gothic-black: #1a1512;
+    --deep-wood: #3d2b1f;
+    --gold: #d4af37;
+    --parchment: #fdf5e6;
+    --iron: #4a4a4a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--parchment);
+    font-family: 'Times New Roman', serif;
+    color: var(--gothic-black);
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: var(--gothic-black);
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+.council-info {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.council-info>img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    margin-right:15px;
+    border:1px solid var(--gold);
+    object-fit:cover;
+}
+
+.logo-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #444;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.lang-switch button {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.lang-switch button:hover, .lang-switch button.active {
+    background: var(--gold);
+    color: var(--gothic-black);
+}
+
+.library-hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    border-bottom: 8px solid var(--deep-wood);
+}
+
+.book-rack-panel {
+    background: #2a1b0a;
+    border: 10px solid var(--deep-wood);
+    outline: 2px solid var(--gold);
+    display: inline-block;
+    padding: 40px 60px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.library-name {
+    font-size: 3rem;
+    color: var(--gold);
+    margin: 0;
+    text-shadow: 2px 2px 4px black;
+}
+
+.vision-section {
+    text-align: center;
+    padding: 50px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.vision-title {
+    font-size: 2.5rem;
+    color: var(--deep-wood);
+    margin-bottom: 10px;
+}
+
+.vision-phrase {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #555;
+}
+
+.panel-container {
+    padding: 40px 0;
+    background: #eee;
+    overflow: hidden;
+    border-top: 2px solid var(--deep-wood);
+    border-bottom: 2px solid var(--deep-wood);
+    margin: 20px 0;
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--deep-wood);
+    font-weight: bold;
+}
+
+.marquee-wrapper {
+    display: flex;
+    width: 200%;
+    animation: marquee 60s linear infinite;
+}
+
+.marquee-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.item-card {
+    width: 200px;
+    height: 280px;
+    background: #ccc;
+    margin: 0 15px;
+    border: 4px solid white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: 5px solid var(--deep-wood);
+}
+
+.book-card{
+    padding:0;
+    overflow:hidden;
+}
+
+.book-card>img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.img-card{
+    width:320px;
+    height:210px;
+    padding:0;
+    overflow:hidden;
+}
+
+.img-card>img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+
+footer {
+    background: var(--gothic-black);
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--gold);
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+
+    /* Nav */
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        gap: 10px;
+    }
+    .council-info {
+        font-size: 0.9rem;
+    }
+    .lang-switch {
+        display: flex;
+        width: 100%;
+    }
+    .lang-switch button {
+        flex: 1;
+        margin-left: 0;
+        margin-right: 5px;
+        font-size: 0.85rem;
+        padding: 6px 4px;
+    }
+    .lang-switch button:last-child {
+        margin-right: 0;
+    }
+
+    /* Hero */
+    .library-hero {
+        padding: 50px 16px;
+    }
+    .book-rack-panel {
+        padding: 24px 20px;
+        border-width: 6px;
+    }
+    .library-name {
+        font-size: 1.6rem;
+    }
+    .book-rack-panel p {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    /* Vision / Mission */
+    .vision-section {
+        padding: 30px 16px;
+    }
+    .vision-title {
+        font-size: 1.6rem;
+    }
+    .vision-phrase {
+        font-size: 1rem;
+    }
+
+    /* History */
+    section[style*="background: #2a1b0a"] {
+        padding: 40px 16px !important;
+    }
+    #history-paragraphs {
+        font-size: 0.95rem !important;
+        line-height: 1.8 !important;
+    }
+
+    /* Panel titles */
+    .panel-title {
+        font-size: 1.3rem;
+        padding: 0 16px;
+    }
+
+    /* Book cards — keep portrait */
+    .panel-container {
+        padding: 24px 0;
+    }
+    .marquee-wrapper .item-card {
+        width: 130px !important;
+        height: 185px !important;
+        margin: 0 8px !important;
+    }
+
+    /* Gallery cards — landscape but smaller */
+    .gallery-card {
+        width: 220px !important;
+        height: 145px !important;
+    }
+
+    /* Contact grid → single column */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        padding: 24px 16px;
+        gap: 16px;
+    }
+    .contact-info h2 {
+        font-size: 1.3rem;
+    }
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+    .map-container iframe {
+        height: 220px;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.8rem;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .library-name {
+        font-size: 1.25rem;
+    }
+    .vision-title {
+        font-size: 1.3rem;
+    }
+    .marquee-wrapper .item-card {
+        width: 110px !important;
+        height: 155px !important;
+    }
+}

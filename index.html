@@ -4,310 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>වෑඋඩ මහජන පුස්තකාලය | Weuda Public Library</title>
-    <style>
-        :root {
-            --gothic-black: #1a1512;
-            --deep-wood: #3d2b1f;
-            --gold: #d4af37;
-            --parchment: #fdf5e6;
-            --iron: #4a4a4a;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--parchment);
-            font-family: 'Times New Roman', serif;
-            color: var(--gothic-black);
-        }
-
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 40px;
-            background: var(--gothic-black);
-            color: var(--gold);
-            border-bottom: 2px solid var(--gold);
-        }
-
-        .council-info {
-            display: flex;
-            align-items: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            background: #444;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 1px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-
-        .lang-switch button {
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 5px 12px;
-            margin-left: 5px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: 0.3s;
-        }
-
-        .lang-switch button:hover, .lang-switch button.active {
-            background: var(--gold);
-            color: var(--gothic-black);
-        }
-
-        .library-hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 8px solid var(--deep-wood);
-        }
-
-        .book-rack-panel {
-            background: #2a1b0a;
-            border: 10px solid var(--deep-wood);
-            outline: 2px solid var(--gold);
-            display: inline-block;
-            padding: 40px 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .library-name {
-            font-size: 3rem;
-            color: var(--gold);
-            margin: 0;
-            text-shadow: 2px 2px 4px black;
-        }
-
-        .vision-section {
-            text-align: center;
-            padding: 50px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .vision-title {
-            font-size: 2.5rem;
-            color: var(--deep-wood);
-            margin-bottom: 10px;
-        }
-
-        .vision-phrase {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #555;
-        }
-
-        .panel-container {
-            padding: 40px 0;
-            background: #eee;
-            overflow: hidden;
-            border-top: 2px solid var(--deep-wood);
-            border-bottom: 2px solid var(--deep-wood);
-            margin: 20px 0;
-        }
-
-        .panel-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--deep-wood);
-            font-weight: bold;
-        }
-
-        .marquee-wrapper {
-            display: flex;
-            width: 200%;
-            animation: marquee 30s linear infinite;
-        }
-
-        .marquee-wrapper:hover {
-            animation-play-state: paused;
-        }
-
-        .item-card {
-            width: 200px;
-            height: 280px;
-            background: #ccc;
-            margin: 0 15px;
-            border: 4px solid white;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: 5px solid var(--deep-wood);
-        }
-
-        footer {
-            background: var(--gothic-black);
-            color: #888;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            border-top: 3px solid var(--gold);
-        }
-
-        /* ── MOBILE RESPONSIVE ── */
-        @media (max-width: 768px) {
-
-            /* Nav */
-            .top-nav {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 12px 16px;
-                gap: 10px;
-            }
-            .council-info {
-                font-size: 0.9rem;
-            }
-            .lang-switch {
-                display: flex;
-                width: 100%;
-            }
-            .lang-switch button {
-                flex: 1;
-                margin-left: 0;
-                margin-right: 5px;
-                font-size: 0.85rem;
-                padding: 6px 4px;
-            }
-            .lang-switch button:last-child {
-                margin-right: 0;
-            }
-
-            /* Hero */
-            .library-hero {
-                padding: 50px 16px;
-            }
-            .book-rack-panel {
-                padding: 24px 20px;
-                border-width: 6px;
-            }
-            .library-name {
-                font-size: 1.6rem;
-            }
-            .book-rack-panel p {
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-            }
-
-            /* Vision / Mission */
-            .vision-section {
-                padding: 30px 16px;
-            }
-            .vision-title {
-                font-size: 1.6rem;
-            }
-            .vision-phrase {
-                font-size: 1rem;
-            }
-
-            /* History */
-            section[style*="background: #2a1b0a"] {
-                padding: 40px 16px !important;
-            }
-            #history-paragraphs {
-                font-size: 0.95rem !important;
-                line-height: 1.8 !important;
-            }
-
-            /* Panel titles */
-            .panel-title {
-                font-size: 1.3rem;
-                padding: 0 16px;
-            }
-
-            /* Book cards — keep portrait */
-            .panel-container {
-                padding: 24px 0;
-            }
-            .marquee-wrapper .item-card {
-                width: 130px !important;
-                height: 185px !important;
-                margin: 0 8px !important;
-            }
-
-            /* Gallery cards — landscape but smaller */
-            .gallery-card {
-                width: 220px !important;
-                height: 145px !important;
-            }
-
-            /* Contact grid → single column */
-            .contact-grid {
-                grid-template-columns: 1fr;
-                padding: 24px 16px;
-                gap: 16px;
-            }
-            .contact-info h2 {
-                font-size: 1.3rem;
-            }
-            .contact-info p {
-                font-size: 0.9rem;
-            }
-            .map-container iframe {
-                height: 220px;
-            }
-
-            /* Footer */
-            footer {
-                font-size: 0.8rem;
-                padding: 16px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .library-name {
-                font-size: 1.25rem;
-            }
-            .vision-title {
-                font-size: 1.3rem;
-            }
-            .marquee-wrapper .item-card {
-                width: 110px !important;
-                height: 155px !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="top-nav">
         <div class="council-info">
-            <img src="logo.jpg" alt="Logo" style="width:50px;height:50px;border-radius:50%;margin-right:15px;border:1px solid var(--gold);object-fit:cover;">
+            <img src="./img/logo.jpg" alt="Logo">
             <span data-key="council"></span>
         </div>
         <div class="lang-switch">
@@ -339,7 +42,7 @@
         <div style="max-width: 900px; margin: auto;">
             <h2 style="text-align:center; color: var(--gold); font-size: 2rem; margin-bottom: 10px; letter-spacing: 2px;" data-key="historyTitle"></h2>
             <div style="width: 60px; height: 3px; background: var(--gold); margin: 0 auto 40px;"></div>
-            <div id="history-paragraphs" style="color: #e8d8c0; font-size: 1.05rem; line-height: 2; text-align: justify;"></div>
+            <div id="history-paragraphs" style="color: #e8d8c0; font-size: 1.05rem; line-height: 2; text-align: center;"></div>
             <div style="margin-top: 40px; border-top: 1px solid var(--gold); padding-top: 20px; text-align: right; color: var(--gold); font-style: italic;">
                 <span data-key="historyAuthor"></span>
             </div>
@@ -348,82 +51,12 @@
 
     <div class="panel-title" style="margin-top: 50px;" data-key="booksTitle"></div>
     <div class="panel-container">
-        <div class="marquee-wrapper">
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book1.jpg" alt="Book 1" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book2.jpg" alt="Book 2" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book3.jpg" alt="Book 3" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book4.jpg" alt="Book 4" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book5.jpg" alt="Book 5" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book6.jpg" alt="Book 6" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book7.jpg" alt="Book 7" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book9.jpg" alt="Book 9" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book10.jpg" alt="Book 10" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book11.jpg" alt="Book 11" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book12.jpg" alt="Book 12" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book13.jpg" alt="Book 13" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book14.jpg" alt="Book 14" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book1.jpg" alt="Book 1" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book2.jpg" alt="Book 2" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book3.jpg" alt="Book 3" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book4.jpg" alt="Book 4" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book5.jpg" alt="Book 5" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book6.jpg" alt="Book 6" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book7.jpg" alt="Book 7" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book9.jpg" alt="Book 9" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book10.jpg" alt="Book 10" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book11.jpg" alt="Book 11" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book12.jpg" alt="Book 12" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book13.jpg" alt="Book 13" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card" style="padding:0;overflow:hidden;"><img src="book14.jpg" alt="Book 14" style="width:100%;height:100%;object-fit:cover;"></div>
-        </div>
+        <div id="books-panel" class="marquee-wrapper"></div>
     </div>
 
     <div class="panel-title" data-key="galleryTitle"></div>
     <div class="panel-container" style="background: #e2d1c3;">
-        <div class="marquee-wrapper" style="animation-direction: reverse; align-items: center;">
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img1.jpeg" alt="Photo 1" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img2.jpeg" alt="Photo 2" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img3.jpeg" alt="Photo 3" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img4.jpeg" alt="Photo 4" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img5.jpeg" alt="Photo 5" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img6.jpeg" alt="Photo 6" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img7.jpeg" alt="Photo 7" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img8.jpeg" alt="Photo 8" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img9.jpeg" alt="Photo 9" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img10.jpeg" alt="Photo 10" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img11.jpeg" alt="Photo 11" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img12.jpeg" alt="Photo 12" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img13.jpeg" alt="Photo 13" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img14.jpeg" alt="Photo 14" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img15.jpeg" alt="Photo 15" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img16.jpeg" alt="Photo 16" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img17.jpeg" alt="Photo 17" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img18.jpeg" alt="Photo 18" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img19.jpeg" alt="Photo 19" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img20.jpeg" alt="Photo 20" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img21.jpeg" alt="Photo 21" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img1.jpeg" alt="Photo 1" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img2.jpeg" alt="Photo 2" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img3.jpeg" alt="Photo 3" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img4.jpeg" alt="Photo 4" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img5.jpeg" alt="Photo 5" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img6.jpeg" alt="Photo 6" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img7.jpeg" alt="Photo 7" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img8.jpeg" alt="Photo 8" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img9.jpeg" alt="Photo 9" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img10.jpeg" alt="Photo 10" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img11.jpeg" alt="Photo 11" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img12.jpeg" alt="Photo 12" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img13.jpeg" alt="Photo 13" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img14.jpeg" alt="Photo 14" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img15.jpeg" alt="Photo 15" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img16.jpeg" alt="Photo 16" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img17.jpeg" alt="Photo 17" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img18.jpeg" alt="Photo 18" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img19.jpeg" alt="Photo 19" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img20.jpeg" alt="Photo 20" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div class="item-card gallery-card" style="width:320px;height:210px;padding:0;overflow:hidden;"><img src="img21.jpeg" alt="Photo 21" style="width:100%;height:100%;object-fit:cover;"></div>
-        </div>
+        <div id="img-panel" class="marquee-wrapper" style="animation-direction: reverse; align-items: center;"></div>
     </div>
 
     <div class="contact-grid">
@@ -432,9 +65,30 @@
             <p>📍 <span data-key="address"></span></p>
             <p>📞 <span data-key="phone"></span></p>
             <p>✉️ <span data-key="email"></span></p>
+            <a href="https://wa.me/94727144061?text=ආයුබෝවන්" target="_blank" style="
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 12px;
+                background: #25D366;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-family: 'Times New Roman', serif;
+                font-size: 1rem;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+                transition: background 0.3s, transform 0.2s;
+            " onmouseover="this.style.background='#1ebe5d';this.style.transform='scale(1.03)'" onmouseout="this.style.background='#25D366';this.style.transform='scale(1)'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span data-key="whatsappBtn"></span>
+            </a>
         </div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.4795540018245!2d80.48244679999999!3d7.4120563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae341002b8c278d%3A0xd87611a4ad49b1b5!2sPublic%20Library%20-%20Weuda!5e0!3m2!1sen!2slk!4v1771577251741!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.4795540018245!2d80.48244679999999!3d7.4120563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae341002b8c278d%3A0xd87611a4ad49b1b5!2sPublic%20Library%20-%20Weuda!5e0!3m2!1sen!2slk!4v1771580064038!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 
@@ -442,145 +96,7 @@
         <span data-key="footer"></span>
     </footer>
 
-    <script>
-        const translations = {
-            si: {
-                council: "මාවතගම ප්‍රාදේශීය සභාව",
-                libraryName: "වෑඋඩ මහජන පුස්තකාලය",
-                libraryNameSub: "WEUDA PUBLIC LIBRARY",
-                visionTitle: "දැක්ම",
-                visionPhrase: '"විශ්ව දැනුමට අත්වැලක්"',
-                missionTitle: "මෙහෙවර",
-                missionText: "පාඨකයින් වෙත දැනුම ලබාදීමත්, එමඟින් දැනුමෙන් කුසලතාවයෙන් හා යහපත් ආකල්ප වලින් පිරිපුන් සමාජයක් නිර්මාණය කිරීමට දායක වීමත්, ඉන් තිරසාර ආර්ථික හා මානව සංවර්ධනයක් ඇති කිරීම හා ජාතික සංවර්ධනයට උපරිම දායකත්වයක් ලබා දීම.",
-                historyTitle: "පුස්තකාල ඉතිහාසයෙන් බිඳක්",
-                historyParagraphs: [
-                    "දිවංගත ආර්. ප්‍රේමදාස ජනාධිපති තුමන්ගේ සංකල්පයක් වූ \"ප්‍රජාශක්ති\" වැඩ සටහන යටතේ 1973 දී වෑඋඩ මහජන පුස්තකාලය, පරගහදෙණිය නගරයට ආසන්නව වෑඋඩ ගම්සභා කාර්යාලය අසල ගොඩනැගිල්ලක ආරම්භ කර ඇත. මෙහි ප්‍රථම පුස්තකාල භාරකරු ලෙස කටයුතු කර ඇත්තේ පුස්තකාල සහායක වරයෙකු වූ වෑඋඩ ප්‍රදේශයේ උපත ලද ඩබ්.එස්.කුලරත්න මහතාය. ග්‍රන්ථ 230කින් ආරම්භ කළ මෙම පුස්තකාලයේ ආරම්භක සමාජිකයා වී ඇත්තේ එන්.එම්.ටී.බී. හෙට්ටිපොල මහතාය.",
-                    "1978-1979 කාල වකවානුවේදී එවකට පාර්ලිමේන්තු මන්ත්‍රීවරයකුව සිටි ජී.එම්.ප්‍රේමචන්ද්‍ර මහතා වෑඋඩ වැලකන්ද විහාරයට යාබදව ඇති වත්මන් පුස්තකාලය පිහිටුවා ඇති ස්ථානයට පුස්තකාලය ගෙන ගොස් ඇත. 1940 දී ඉදිකර තිබූ එම ගොඩනැගිල්ල හා ඊට අයත් භූමිය පුස්තකාලය සඳහා පරිත්‍යාග කර ඇත්තේ ප්‍රදේශයේ දානපතියෙකු වූ ඒච්.ඒ. සිරිසේන මහතාය.",
-                    "1978 අග භාගයේ දී මෙහි පුස්තකාලයාධිපති ලෙස කොළඹ කෙසෙල්වත්ත ප්‍රදේශයේ සිට පැමිණි වයි. ප්‍රේමදාස මහතා කටයුතු කර ඇත. ඉන්පසුව ගලගෙදර ප්‍රදේශයේ සිට පැමිණි කේ.ජී. නන්දාවතී මහත්මිය, දිවුලපිටිය ප්‍රදේශයේ සිට පැමිණි ආර්.පී. තිලකාවතී මහත්මිය, වෑඋඩ ප්‍රදේශයේ පදිංචිව සිටි කුමාරි මාදංගනී අතපත්තු මහත්මිය හා මාවතගම ප්‍රදේශයේ සිට පැමිණි ශීලා ප්‍රනාන්දු මහත්මිය යන අය මෙම පුස්තකාලයේ පුස්තකාලයාධිපතීන් ලෙස කටයුතු කර ඇත.",
-                    "කාලයක් තිස්සේ විවිධ වෙනස් කම් වලට භාජනය වෙමින් අද වන විට නවීන පහසුකම් වලින් යුතු නව පුස්තකාලයක් වෑඋඩ ප්‍රදේශයට හිමිව තිබේ. මෙම ගොඩනැගිල්ල ඉදිකිරීම සඳහා පැරණි පුස්තකාල ගොඩනැගිල්ල මුළුමනින්ම කඩා ඉවත් කොට නව ගොඩනැගිල්ලේ ඉදිකිරීම් කටයුතු ආරම්භ කර ඇත්තේ සනත් මීගොල්ල මහතා මාවතගම ප්‍රාදේශීය සභාවේ සභාපති ධූරය හෙබ වූ කාල වකවානුවේදීය. දෙමහල් ගොඩනැගිල්ලක් වන නව පුස්තකාලයේ බිම් මහලේ කටයුතු සියල්ල නිම කොට 2011 දෙසැම්බර් 10 දින පාඨක අයිතියට පත්කර ඇත්තේ උපුල් ප්‍රියන්ත පෙරේරා මහතා මාවතගම ප්‍රාදේශීය සභාවේ සභාපති ධූරය හෙබ වූ කාලයේදී ය.",
-                    "දැනට සිවුදෙනෙකුගෙන් යුතු කාර්ය මණ්ඩලයක කැපවීම යටතේ දිනෙන් දින සංවර්ධනය කරා යන වෑඋඩ මහජන පුස්තකාලය පාඨකයින්ගේ තොරතුරු අවශ්‍යතා සපුරාලන තොරතුරු මධ්‍යස්ථානයක් බවට පත්ව ඇත. මේ වන විට 12,439 ක් වන ග්‍රන්ථ සම්භාරයක් තිබෙන හා 2,277 ක් වන ලියාපදිංචි පාඨක සංඛ්‍යාවක් සිටින වෑඋඩ මහජන පුස්තකාලය ජනතාවගේ කියවීමේ අවශ්‍යතා මෙන්ම සියළු ප්‍රජා කටයුතු සපුරාලීමට ඇපකැප වී සිටී."
-                ],
-                historyAuthor: "කේ.ආර්. චන්ද්‍රාවතී | පුස්තකාලයාධිපති | වෑඋඩ මහජන පුස්තකාලය",
-                booksTitle: "අපේ පොත් කිහිපයක්",
-                book1: "පොත් කවරය 1",
-                book2: "පොත් කවරය 2",
-                book3: "පොත් කවරය 3",
-                book4: "පොත් කවරය 4",
-                book5: "පොත් කවරය 5",
-                book6: "පොත් කවරය 6",
-                galleryTitle: "ඡායාරූප ගැලරිය",
-                photo1: "රූපය 1",
-                photo2: "රූපය 2",
-                photo3: "රූපය 3",
-                photo4: "රූපය 4",
-                photo5: "රූපය 5",
-                contactTitle: "අපව අමතන්න",
-                address: "වෑඋඩ මහජන පුස්තකාලය, වෑඋඩ, මාවතගම, කුරුණෑගල, ශ්‍රී ලංකාව",
-                phone: "දුරකථනය: +94 372 299 821 (මාවතගම ප්‍රාදේශීය සභාව)",
-                email: "විද්‍යුත් තැපෑල: libraryweuda@gmail.com",
-                footer: "© 2024 මාවතගම ප්‍රාදේශීය සභාව - සියලුම හිමිකම් ඇවිරිණි."
-            },
-            en: {
-                council: "Mawathagama Pradeshiya Sabha",
-                libraryName: "Weuda Public Library",
-                libraryNameSub: "WEUDA PUBLIC LIBRARY",
-                visionTitle: "Vision",
-                visionPhrase: '"A Bridge to Universal Knowledge"',
-                missionTitle: "Mission",
-                missionText: "To provide knowledge to readers, thereby contributing to the creation of a society enriched with knowledge, skills, and positive attitudes, fostering sustainable economic and human development, and making the utmost contribution to national development.",
-                historyTitle: "A Glimpse of Library History",
-                historyParagraphs: [
-                    "The Weuda Public Library was established in 1973 under the \"Prajasakti\" programme — a concept of the late President R. Premadasa — in a building near the Weuda Village Council office, close to the town of Paragahadeniya. The first librarian was W.S. Kularatne, a library assistant born in the Weuda area. The library began with a collection of 230 books, and N.M.T.B. Hettipola became its founding member.",
-                    "During 1978–1979, then Member of Parliament G.M. Premachandra relocated the library to its current location, adjacent to the Weuda Welakanda Temple. The building, constructed in 1940, along with its land, was donated to the library by H.A. Sirisena, a philanthropist from the area.",
-                    "In the latter part of 1978, Y. Premadasa from the Keselwatta area of Colombo served as librarian. Subsequently, K.G. Nandawathi from Galagodara, R.P. Thilakawathi from Divulapitiya, Kumari Madangani Athapatthu from Weuda, and Sheela Pernando from Mawathagama also served as librarians at this institution.",
-                    "Having undergone many changes over the years, the Weuda area now has a modern new library. The old building was completely demolished and construction of the new building began during the tenure of Sanath Meegolla as Chairman of the Mawathagama Pradeshiya Sabha. The ground floor of the new two-storey library was completed and opened to readers on 10 December 2011, during the chairmanship of Upul Priyantha Perera.",
-                    "Today, with a dedicated staff of four, the Weuda Public Library has grown into an information centre serving the knowledge needs of its readers. Currently housing a collection of 12,439 books with 2,277 registered members, the library remains committed to fulfilling the reading needs of the public and all community activities."
-                ],
-                historyAuthor: "K.R. Chandrawathi | Librarian | Weuda Public Library",
-                booksTitle: "Some of Our Books",
-                book1: "Book Cover 1",
-                book2: "Book Cover 2",
-                book3: "Book Cover 3",
-                book4: "Book Cover 4",
-                book5: "Book Cover 5",
-                book6: "Book Cover 6",
-                galleryTitle: "Photo Gallery",
-                photo1: "Photo 1",
-                photo2: "Photo 2",
-                photo3: "Photo 3",
-                photo4: "Photo 4",
-                photo5: "Photo 5",
-                contactTitle: "Contact Us",
-                address: "Weuda Public Library, Weuda, Mawathagama, Kurunegala, Sri Lanka",
-                phone: "Phone: +94 372 299 821 (Mawathagama Pradeshiya Sabha)",
-                email: "Email: libraryweuda@gmail.com",
-                footer: "© 2024 Mawathagama Pradeshiya Sabha - All Rights Reserved."
-            },
-            ta: {
-                council: "மாவதகம பிரதேச சபை",
-                libraryName: "வேவுட பொது நூலகம்",
-                libraryNameSub: "WEUDA PUBLIC LIBRARY",
-                visionTitle: "தொலைநோக்கு",
-                visionPhrase: '"உலக அறிவுக்கு ஒரு பாலம்"',
-                missionTitle: "நோக்கம்",
-                missionText: "வாசகர்களுக்கு அறிவை வழங்குவதும், அதன் மூலம் அறிவு, திறன் மற்றும் நேர்மறையான மனோபாவங்களால் நிறைந்த சமூகத்தை உருவாக்குவதற்கு பங்களிப்பதும், நிலையான பொருளாதார மற்றும் மனித வளர்ச்சியை மேம்படுத்துவதும், தேசிய வளர்ச்சிக்கு உச்சபட்ச பங்களிப்பை வழங்குவதும் ஆகும்.",
-                historyTitle: "நூலக வரலாற்றின் ஒரு பகுதி",
-                historyParagraphs: [
-                    "திவங்கிய ஜனாதிபதி ஆர். பிரேமதாச அவர்களின் கருத்தாக்கமான \"பிரஜாசக்தி\" திட்டத்தின் கீழ் 1973 ஆம் ஆண்டு வேவுட பொது நூலகம், பரகஹதெனிய நகருக்கு அருகில் வேவுட கிராம சபை அலுவலகத்தின் அருகே ஒரு கட்டிடத்தில் நிறுவப்பட்டது. முதல் நூலகாளராக பணியாற்றியவர் வேவுட பகுதியில் பிறந்த நூலக உதவியாளர் டபிள்யூ.எஸ். குலரத்ன அவர்கள். 230 நூல்களுடன் தொடங்கிய இந்த நூலகத்தின் ஆரம்பகால உறுப்பினர் என்.எம்.டி.பி. ஹெட்டிபொல அவர்கள்.",
-                    "1978–1979 காலகட்டத்தில், அப்போதைய நாடாளுமன்ற உறுப்பினர் ஜி.எம். பிரேமசந்திர அவர்கள் நூலகத்தை வேவுட வெலகண்ட விஹாரைக்கு அருகில் உள்ள தற்போதைய இடத்திற்கு மாற்றினார். 1940 ஆம் ஆண்டு கட்டப்பட்ட அந்த கட்டிடமும் அதன் நிலமும் பகுதியின் தொண்டர் ஹெச்.ஏ. சிரிசேன அவர்களால் நூலகத்திற்கு வழங்கப்பட்டது.",
-                    "1978 இன் பிற்பகுதியில் கொழும்பு கெசெல்வத்தாவிலிருந்து வந்த ஒய். பிரேமதாச அவர்கள் நூலகாளராக பணியாற்றினார். பின்னர் கலகொடர பகுதியிலிருந்து கே.ஜி. நந்தாவதி, திவுலபிடிய பகுதியிலிருந்து ஆர்.பி. திலகாவதி, வேவுட பகுதியைச் சேர்ந்த குமாரி மாதங்கணி அதபத்து மற்றும் மாவதகம பகுதியிலிருந்து சீலா பெர்னாண்டோ ஆகியோர் நூலகாளர்களாக பணியாற்றினர்.",
-                    "பல மாற்றங்களுக்கு உட்பட்டு, இன்று வேவுட பகுதியில் நவீன வசதிகளுடன் கூடிய புதிய நூலகம் அமைந்துள்ளது. பழைய கட்டிடம் முழுவதுமாக இடிக்கப்பட்டு, சனத் மீகொல்ல மாவதகம பிரதேச சபை தலைவராக இருந்த காலத்தில் புதிய கட்டிடம் கட்டத் தொடங்கியது. இரண்டு மாடி கட்டிடத்தின் தரை தளம் முழுமையாக நிர்மாணிக்கப்பட்டு 2011 டிசம்பர் 10 அன்று உபுல் பிரியந்த பெரேரா மாவதகம பிரதேச சபை தலைவராக இருந்த காலத்தில் வாசகர்களுக்கு திறக்கப்பட்டது.",
-                    "தற்போது நான்கு பேர் கொண்ட அர்ப்பணிப்பான ஊழியர்களுடன் தினந்தோறும் வளர்ந்து வரும் வேவுட பொது நூலகம் வாசகர்களின் தகவல் தேவைகளை பூர்த்தி செய்யும் தகவல் மையமாக மாறியுள்ளது. தற்போது 12,439 நூல்களும் 2,277 பதிவு செய்யப்பட்ட உறுப்பினர்களும் உள்ள இந்த நூலகம் மக்களின் வாசிப்பு தேவைகளையும் அனைத்து சமூக நடவடிக்கைகளையும் நிறைவேற்ற அர்ப்பணித்துள்ளது."
-                ],
-                historyAuthor: "கே.ஆர். சந்திராவதி | நூலகாளர் | வேவுட பொது நூலகம்",
-                booksTitle: "எங்கள் சில புத்தகங்கள்",
-                book1: "புத்தக அட்டை 1",
-                book2: "புத்தக அட்டை 2",
-                book3: "புத்தக அட்டை 3",
-                book4: "புத்தக அட்டை 4",
-                book5: "புத்தக அட்டை 5",
-                book6: "புத்தக அட்டை 6",
-                galleryTitle: "படக் கூடம்",
-                photo1: "படம் 1",
-                photo2: "படம் 2",
-                photo3: "படம் 3",
-                photo4: "படம் 4",
-                photo5: "படம் 5",
-                contactTitle: "எங்களை தொடர்பு கொள்ளுங்கள்",
-                address: "வேவுட பொது நூலகம், வேவுட, மாவதகம, குருணாகல், இலங்கை",
-                phone: "தொலைபேசி: +94 372 299 821 (மாவதகம பிரதேச சபை)",
-                email: "மின்னஞ்சல்: libraryweuda@gmail.com",
-                footer: "© 2024 மாவதகம பிரதேச சபை - அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
-            }
-        };
-
-        function setLang(lang) {
-            const t = translations[lang];
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (t[key]) el.textContent = t[key];
-            });
-
-            // Render history paragraphs
-            const historyDiv = document.getElementById('history-paragraphs');
-            if (historyDiv && t.historyParagraphs) {
-                historyDiv.innerHTML = t.historyParagraphs
-                    .map(p => `<p style="margin-bottom:1.5rem;">${p}</p>`)
-                    .join('');
-            }
-
-            // Update active button
-            ['si', 'en', 'ta'].forEach(l => {
-                document.getElementById('btn-' + l).classList.remove('active');
-            });
-            document.getElementById('btn-' + lang).classList.add('active');
-
-            document.documentElement.lang = lang;
-        }
-
-        // Initialize with Sinhala
-        setLang('si');
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
