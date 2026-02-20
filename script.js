@@ -159,4 +159,4 @@ function planGenerater(parent, count, path,  extention, alt, cname) {
 }
 
 planGenerater(booksPanel, 14, "./img/books_img/book", "jpg", "Book", "book-card");
-planGenerater(imgPanel, 14, "./img/cover_img/img", "jpeg", "Photo", "img-card");
+planGenerater(imgPanel, 21, "./img/cover_img/img", "jpeg", "Photo", "img-card");
