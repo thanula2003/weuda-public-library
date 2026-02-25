@@ -1,4 +1,3 @@
-
 const translations = {
     si: {
         council: "මාවතගම ප්‍රාදේශීය සභාව",
@@ -8,6 +7,9 @@ const translations = {
         visionPhrase: '"විශ්ව දැනුමට අත්වැලක්"',
         missionTitle: "මෙහෙවර",
         missionText: "පාඨකයින් වෙත දැනුම ලබාදීමත්, එමඟින් දැනුමෙන් කුසලතාවයෙන් හා යහපත් ආකල්ප වලින් පිරිපුන් සමාජයක් නිර්මාණය කිරීමට දායක වීමත්, ඉන් තිරසාර ආර්ථික හා මානව සංවර්ධනයක් ඇති කිරීම හා ජාතික සංවර්ධනයට උපරිම දායකත්වයක් ලබා දීම.",
+        statBooks: "ග්‍රන්ථ",
+        statMembers: "සාමාජිකයින්",
+        statYears: "වසර",
         historyTitle: "පුස්තකාල ඉතිහාසයෙන් බිඳක්",
         historyParagraphs: [
             "1973 වසරේදී එවකට රජයේ සංකල්පයක් වූ \"ප්‍රජා සතිය\" වැඩසටහන යටතේ ආරම්භ වූ වෑඋඩ මහජන පුස්තකාලය, මුලින්ම ස්ථාපනය කර ඇත්තේ පරගහදෙනිය නගරයට ආසන්නව වෑඋඩ ගම්සභා කාර්යාලය අසල ගොඩනැගිල්ලකය. මෙහි ප්‍රථම පුස්තකාල භාරකරු ලෙස කටයුතු කර ඇත්තේ වෑඋඩ ප්‍රදේශයේ උපත ලද ඩබ්.එස්. කුලරත්න මහතා බවට තොරතුරු හෙළිවේ.",
@@ -48,6 +50,9 @@ const translations = {
         visionPhrase: '"A Bridge to Universal Knowledge"',
         missionTitle: "Mission",
         missionText: "To provide knowledge to readers, thereby contributing to the creation of a society enriched with knowledge, skills, and positive attitudes, fostering sustainable economic and human development, and making the utmost contribution to national development.",
+        statBooks: "Books",
+        statMembers: "Members",
+        statYears: "Years",
         historyTitle: "A Glimpse of Library History",
         historyParagraphs: [
             "The Weuda Public Library was established in 1973 under the government's \"Community Week\" programme. It was initially located near the Paragahadeniya town, in a building adjacent to the Weuda Village Council office. Records reveal that Mr. W.S. Kularatne, a native of the Weuda area, served as its first librarian.",
@@ -88,6 +93,9 @@ const translations = {
         visionPhrase: '"உலக அறிவுக்கு ஒரு பாலம்"',
         missionTitle: "நோக்கம்",
         missionText: "வாசகர்களுக்கு அறிவை வழங்குவதும், அதன் மூலம் அறிவு, திறன் மற்றும் நேர்மறையான மனோபாவங்களால் நிறைந்த சமூகத்தை உருவாக்குவதற்கு பங்களிப்பதும், நிலையான பொருளாதார மற்றும் மனித வளர்ச்சியை மேம்படுத்துவதும், தேசிய வளர்ச்சிக்கு உச்சபட்ச பங்களிப்பை வழங்குவதும் ஆகும்.",
+        statBooks: "நூல்கள்",
+        statMembers: "உறுப்பினர்கள்",
+        statYears: "ஆண்டுகள்",
         historyTitle: "நூலக வரலாற்றின் ஒரு பகுதி",
         historyParagraphs: [
             "1973 ஆம் ஆண்டு அரசாங்கத்தின் \"சமூக வாரம்\" திட்டத்தின் கீழ் ஆரம்பிக்கப்பட்ட வேவுட பொது நூலகம், முதலில் பரகஹதெனிய நகருக்கு அருகில் வேவுட கிராம சபை அலுவலகத்திற்கு அருகிலுள்ள கட்டிடத்தில் நிறுவப்பட்டது. வேவுட பகுதியைப் பிறப்பிடமாகக் கொண்ட திரு. டபிள்யூ.எஸ். குலரத்ன இதன் முதல் நூலகப் பொறுப்பாளராகப் பணியாற்றினார் என்று தகவல்கள் தெரிவிக்கின்றன.",
@@ -123,15 +131,19 @@ const translations = {
 };
 
 const booksPanel = document.querySelector("#books-panel");
-const imgPanel = document.querySelector("#img-panel");
+const imgPanel   = document.querySelector("#img-panel");
 
-
+const nbLabels = {
+    si: 'නව පොත් ගවේෂණය කරන්න',
+    en: 'Explore New Books',
+    ta: 'புதிய நூல்களை காண்க'
+};
 
 function setLang(lang) {
     const t = translations[lang];
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (t[key]) el.textContent = t[key];
+        if (t[key] !== undefined) el.textContent = t[key];
     });
 
     // Render history paragraphs
@@ -148,61 +160,140 @@ function setLang(lang) {
     });
     document.getElementById('btn-' + lang).classList.add('active');
 
+    // Update floating new-books button label
+    const nbLabel = document.getElementById('nb-label');
+    if (nbLabel) nbLabel.textContent = nbLabels[lang] || nbLabels.si;
+
     document.documentElement.lang = lang;
 }
 
 // Initialize with Sinhala
 setLang('si');
 
+// ── FIXED SEAMLESS MARQUEE ──────────────────────────────────
+// Strategy: load all images first, filter 404s, then duplicate
+// the surviving set so the CSS -50% translate loops perfectly.
+
+function buildMarquee(parent, count, pathFn, altFn, cardClass) {
+    const loaded = [];
+    let settled = 0;
+
+    function finalize() {
+        if (settled < count) return;
+        if (loaded.length === 0) return;
+
+        // Sort by original index to preserve order
+        loaded.sort((a, b) => a.i - b.i);
+
+        // Build: original set + exact duplicate = 2× width
+        // CSS animates -50% → seamless loop
+        parent.innerHTML = '';
+        [...loaded, ...loaded].forEach(item => {
+            parent.appendChild(item.el.cloneNode(true));
+        });
+
+        // Scale speed to number of items (more items = longer duration)
+        parent.style.animationDuration = Math.max(20, loaded.length * 3.5) + 's';
+    }
+
+    for (let i = 1; i <= count; i++) {
+        const div = document.createElement('div');
+        div.className = `item-card ${cardClass}`;
+
+        const img = document.createElement('img');
+        img.alt   = altFn(i);
+        img.loading = 'lazy';
+
+        const idx = i;
+        img.onload  = () => { loaded.push({ i: idx, el: div }); settled++; finalize(); };
+        img.onerror = () => { settled++; finalize(); };
+
+        img.src = pathFn(i);
+        div.appendChild(img);
+    }
+}
 // generate div (books)
 function planGenerater(parent, count, path, extension, alt, cname) {
-parent.innerHTML = "";
-
-for (let i = 1; i <= count; i++) {
-const div = document.createElement("div");
-div.className = `item-card ${cname}`;
-
-const img = document.createElement("img");
-img.src = `${path}${i}.${extension}`;
-img.alt = `${alt} ${i}`;
-
-// remove card if image missing
-img.onerror = () => {
+    parent.innerHTML = "";
+    
+    for (let i = 1; i <= count; i++) {
+    const div = document.createElement("div");
+    div.className = `item-card ${cname}`;
+    
+    const img = document.createElement("img");
+    img.src = `${path}${i}.${extension}`;
+    img.alt = `${alt} ${i}`;
+    
+    // remove card if image missing
+    img.onerror = () => {
+        console.warn("Missing:", img.src);
+        div.remove();
+    };
+    
+    div.appendChild(img);
+    parent.appendChild(div);
+    }
+    }
+    
+    // books
+    planGenerater(
+    booksPanel,
+    14,
+    "./img/books_img/book",
+    "jpg",
+    "Book",
+    "book-card"
+    );
+    
+    
+    // cover images
+    for (let i = 1; i <= 21; i++) {
+    const div = document.createElement("div");
+    div.className = "item-card img-card";
+    
+    const img = document.createElement("img");
+    img.src = `./img/cover_img/img${i}.jpeg`;
+    img.alt = `Photo ${i}`;
+    
+    // remove if missing
+    img.onerror = () => {
     console.warn("Missing:", img.src);
     div.remove();
-};
-
-div.appendChild(img);
-parent.appendChild(div);
+    };
+    
+    div.appendChild(img);
+    imgPanel.appendChild(div);
+    }
+// ── STATS COUNTER ANIMATION ─────────────────────────────────
+function animateCounter(el, target, duration) {
+    duration = duration || 1800;
+    const suffix = el.getAttribute('data-suffix') || '';
+    let start = null;
+    function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            el.textContent = target.toLocaleString() + suffix;
+        }
+    }
+    requestAnimationFrame(step);
 }
-}
 
-// books
-planGenerater(
-booksPanel,
-14,
-"./img/books_img/book",
-"jpg",
-"Book",
-"book-card"
-);
+const counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            animateCounter(entry.target, target);
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
 
-
-// cover images
-for (let i = 1; i <= 21; i++) {
-const div = document.createElement("div");
-div.className = "item-card img-card";
-
-const img = document.createElement("img");
-img.src = `./img/cover_img/img${i}.jpeg`;
-img.alt = `Photo ${i}`;
-
-// remove if missing
-img.onerror = () => {
-console.warn("Missing:", img.src);
-div.remove();
-};
-
-div.appendChild(img);
-imgPanel.appendChild(div);
-}
+document.querySelectorAll('.stat-number').forEach(function(el) {
+    counterObserver.observe(el);
+});
