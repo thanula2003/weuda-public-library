@@ -77,6 +77,83 @@
         <div id="img-panel" class="marquee-wrapper" style="animation-direction: reverse; align-items: center;"></div>
     </div>
 
+    <!-- Google Docs Viewer -->
+    <section style="background: var(--parchment); padding: 40px 20px; border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold);">
+        <div style="max-width: 900px; margin: auto;">
+            <div style="display:flex; gap:10px; justify-content:center; margin-bottom:24px;">
+                <button onclick="showDoc(1)" id="doc-btn-1" style="
+                    background: var(--gothic-black);
+                    color: var(--gold);
+                    border: 2px solid var(--gold);
+                    padding: 8px 22px;
+                    font-family: 'Times New Roman', serif;
+                    font-size: 0.9rem;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    border-radius: 3px;
+                " onmouseover="this.style.background='var(--gold)';this.style.color='var(--gothic-black)'"
+                   onmouseout="if(activeDoc!==1){this.style.background='var(--gothic-black)';this.style.color='var(--gold)'}">
+                    📄 වෑඋඩ මහජන පුස්තකාලය ශ්‍රේණිගත කිරීමට අදාළ තොරතුරු
+                </button>
+                <button onclick="showDoc(2)" id="doc-btn-2" style="
+                    background: var(--gothic-black);
+                    color: var(--gold);
+                    border: 2px solid var(--gold);
+                    padding: 8px 22px;
+                    font-family: 'Times New Roman', serif;
+                    font-size: 0.9rem;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    border-radius: 3px;
+                " onmouseover="this.style.background='var(--gold)';this.style.color='var(--gothic-black)'"
+                   onmouseout="if(activeDoc!==2){this.style.background='var(--gothic-black)';this.style.color='var(--gold)'}">
+                    📄 පුස්තකාල උපදේශක කමිටු වාර්තා ගොනුව
+                </button>
+            </div>
+            <iframe id="doc-frame"
+                src=""
+                style="width:100%; height:700px; border: 5px solid var(--deep-wood); background: white; display:none;"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+    <script>
+        var activeDoc = null;
+        var docUrls = {
+            1: 'https://docs.google.com/document/d/e/2PACX-1vT2sdeSpe-1TQYp-XY4ihk1TvWeajJH0t-sFo604hOZvCiKuohulyNGO4zqBT58wEvPMoWoJzbBdSmN/pub?embedded=true',
+            2: 'https://docs.google.com/document/d/e/2PACX-1vR99i4Mjq-IKFIHPODi84ywRWJewCC02RWucUlz6RjM_Iyii4SS6YKEBLsBDrTbVLCY_VHmBrCnr11O/pub?embedded=true'
+        };
+        function showDoc(n) {
+            var frame = document.getElementById('doc-frame');
+            if (activeDoc === n) {
+                // Toggle off if same button clicked again
+                activeDoc = null;
+                frame.style.display = 'none';
+                frame.src = '';
+                [1,2].forEach(function(i) {
+                    var btn = document.getElementById('doc-btn-' + i);
+                    btn.style.background = 'var(--gothic-black)';
+                    btn.style.color = 'var(--gold)';
+                });
+                return;
+            }
+            activeDoc = n;
+            frame.src = docUrls[n];
+            frame.style.display = 'block';
+            [1,2].forEach(function(i) {
+                var btn = document.getElementById('doc-btn-' + i);
+                if (i === n) {
+                    btn.style.background = 'var(--gold)';
+                    btn.style.color = 'var(--gothic-black)';
+                } else {
+                    btn.style.background = 'var(--gothic-black)';
+                    btn.style.color = 'var(--gold)';
+                }
+            });
+        }
+    </script>
+
     <div class="contact-grid">
         <div class="contact-info">
             <h2 data-key="contactTitle"></h2>
