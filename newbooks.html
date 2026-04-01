@@ -432,27 +432,37 @@
     </footer>
 
     <script>
-    const TOTAL = 34;
-    const EXTS  = ['jpg','jpeg','png','webp'];
-    const grid  = document.getElementById('books-grid');
+    const START   = 1;        // first book to display
+    const MAX     = 200;       // upper probe limit (auto-stops when images run out)
+    const EXTS    = ['jpg','jpeg','png','webp'];
+    const grid    = document.getElementById('books-grid');
     let validBooks = [];
     let currentLb  = 0;
 
     // ── Build grid ──
     function buildGrid() {
-        let settled = 0;
-        const tries = [];
+        // First, probe how many images exist from START upwards
+        let probeIdx = START;
+        let settled  = 0;
+        let totalToTry = 0;
+        const tries = {};
 
-        for (let i = 1; i <= TOTAL; i++) {
-            tries[i] = { i, found: false, extIdx: 0 };
-            tryLoad(i);
+        function startProbing() {
+            // Probe sequentially: once an index fails all exts, stop adding more
+            // But to keep it simple and consistent with original, probe up to MAX
+            totalToTry = MAX - START + 1;
+            for (let i = START; i <= MAX; i++) {
+                tries[i] = { i, found: false, extIdx: 0 };
+                tryLoad(i);
+            }
         }
+
+        startProbing();
 
         function tryLoad(i) {
             const t = tries[i];
             if (t.extIdx >= EXTS.length) {
-                // All extensions failed – show placeholder
-                addCard(i, null);
+                // All extensions failed – skip (no placeholder for clean look)
                 checkDone();
                 return;
             }
@@ -463,28 +473,23 @@
             tst.src = src;
         }
 
+
+
         function addCard(i, src) {
             const card = document.createElement('div');
             card.className = 'book-card';
-            card.style.animationDelay = ((i - 1) * 0.04) + 's';
+            card.style.animationDelay = ((i - START) * 0.04) + 's';
             card.dataset.idx = i;
 
             const inner = document.createElement('div');
             inner.className = 'book-inner';
 
-            if (src) {
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `New Book ${i}`;
-                img.loading = 'lazy';
-                inner.appendChild(img);
-                validBooks[i] = src;
-            } else {
-                const ph = document.createElement('div');
-                ph.className = 'book-placeholder';
-                ph.innerHTML = `📖<span>No. ${i}</span>`;
-                inner.appendChild(ph);
-            }
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `New Book ${i}`;
+            img.loading = 'lazy';
+            inner.appendChild(img);
+            validBooks[i] = src;
 
             const num = document.createElement('div');
             num.className = 'book-num';
@@ -492,10 +497,7 @@
 
             card.appendChild(inner);
             card.appendChild(num);
-
-            if (src) {
-                card.onclick = () => openLightbox(i);
-            }
+            card.onclick = () => openLightbox(i);
 
             // Insert in order
             const after = grid.querySelector(`[data-idx="${i + 1}"]`);
@@ -508,7 +510,7 @@
 
         function checkDone() {
             settled++;
-            if (settled === TOTAL) {
+            if (settled === totalToTry) {
                 const count = Object.keys(validBooks).length;
                 document.getElementById('book-count-label').textContent = count + ' New Books';
             }
@@ -522,7 +524,7 @@
         currentLb = i;
         document.getElementById('lb-img').src    = validBooks[i];
         document.getElementById('lb-img').alt    = `New Book ${i}`;
-        document.getElementById('lb-caption').textContent = `Book No. ${i} of ${TOTAL}`;
+        document.getElementById('lb-caption').textContent = `Book No. ${i}`;
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -533,8 +535,8 @@
     function lbNav(dir) {
         let next = currentLb + dir;
         // find next valid
-        while (next >= 1 && next <= TOTAL && !validBooks[next]) next += dir;
-        if (next < 1 || next > TOTAL) return;
+        while (next >= START && next <= MAX && !validBooks[next]) next += dir;
+        if (next < START || next > MAX) return;
         openLightbox(next);
     }
     function handleLightboxClick(e) {
