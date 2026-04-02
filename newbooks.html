@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="si" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>නව පොත් | New Books — Weuda Public Library</title>
+
+    <!-- ═══════════════════════════════════
+         PRIMARY META TAGS
+    ═══════════════════════════════════ -->
+    <title>නව පොත් එකතුව | New Book Arrivals – Weuda Public Library, Sri Lanka</title>
+
+    <meta name="description"
+          content="Browse the latest new book arrivals at Weuda Public Library (වෑඋඩ මහජන පුස්තකාලය), Mawathagama, Kurunegala, Sri Lanka. Discover 34 newly added books available for members to borrow.">
+
+    <meta name="keywords"
+          content="Weuda Library new books, නව පොත්, new arrivals Weuda Public Library, Mawathagama library books, Kurunegala library new books, Sri Lanka public library books">
+
+    <meta name="author"  content="Weuda Public Library – Mawathagama Pradeshiya Sabha">
+    <meta name="robots"  content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#120c05">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://weudapubliclibrary.vercel.app/newbooks.html">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="si"        href="https://weudapubliclibrary.vercel.app/newbooks.html">
+    <link rel="alternate" hreflang="en"        href="https://weudapubliclibrary.vercel.app/newbooks.html?lang=en">
+    <link rel="alternate" hreflang="ta"        href="https://weudapubliclibrary.vercel.app/newbooks.html?lang=ta">
+    <link rel="alternate" hreflang="x-default" href="https://weudapubliclibrary.vercel.app/newbooks.html">
+
+    <!-- ═══════════════════════════════════
+         OPEN GRAPH
+    ═══════════════════════════════════ -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://weudapubliclibrary.vercel.app/newbooks.html">
+    <meta property="og:site_name"   content="Weuda Public Library">
+    <meta property="og:locale"      content="si_LK">
+    <meta property="og:title"       content="නව පොත් එකතුව | New Book Arrivals – Weuda Public Library">
+    <meta property="og:description" content="Discover the newest book additions at Weuda Public Library, Mawathagama. Browse 34+ new arrivals available to borrow today.">
+    <meta property="og:image"       content="https://weudapubliclibrary.vercel.app/img/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"   content="New book arrivals at Weuda Public Library, Sri Lanka">
+
+    <!-- ═══════════════════════════════════
+         TWITTER CARD
+    ═══════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="New Books – Weuda Public Library | නව පොත් එකතුව">
+    <meta name="twitter:description" content="Browse 34+ new book arrivals at Weuda Public Library, Mawathagama, Sri Lanka.">
+    <meta name="twitter:image"       content="https://weudapubliclibrary.vercel.app/img/og-cover.jpg">
+
+    <!-- ═══════════════════════════════════
+         JSON-LD STRUCTURED DATA
+    ═══════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://weudapubliclibrary.vercel.app/newbooks.html",
+          "name": "New Book Arrivals – Weuda Public Library",
+          "description": "The latest new books added to the collection at Weuda Public Library, Mawathagama, Kurunegala, Sri Lanka.",
+          "url": "https://weudapubliclibrary.vercel.app/newbooks.html",
+          "inLanguage": ["si", "en", "ta"],
+          "isPartOf": {
+            "@type": "WebSite",
+            "url": "https://weudapubliclibrary.vercel.app/",
+            "name": "Weuda Public Library"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Weuda Public Library",
+                "item": "https://weudapubliclibrary.vercel.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "New Book Arrivals",
+                "item": "https://weudapubliclibrary.vercel.app/newbooks.html"
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="icon"             href="/img/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --gothic-black: #1a1512;
@@ -61,6 +156,10 @@
         .nav-back:hover {
             background: var(--gold);
             color: var(--dark-bg);
+        }
+        .nav-back:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
         }
 
         /* ── HERO HEADER ── */
@@ -200,7 +299,8 @@
                         border-color 0.35s ease;
         }
 
-        .book-card:hover .book-inner {
+        .book-card:hover .book-inner,
+        .book-card:focus .book-inner {
             transform: translateY(-8px) rotateY(-4deg) scale(1.03);
             box-shadow:
                 10px 20px 40px rgba(0,0,0,0.7),
@@ -210,6 +310,8 @@
             border-color: var(--gold);
         }
 
+        .book-card:focus { outline: 2px solid var(--gold); outline-offset: 4px; }
+
         .book-inner img {
             width: 100%; height: 100%;
             object-fit: cover;
@@ -217,9 +319,7 @@
             transition: filter 0.35s ease;
         }
 
-        .book-card:hover .book-inner img {
-            filter: brightness(1.08) saturate(1.1);
-        }
+        .book-card:hover .book-inner img { filter: brightness(1.08) saturate(1.1); }
 
         /* Spine shimmer */
         .book-inner::before {
@@ -321,6 +421,7 @@
             transition: transform 0.2s;
         }
         .lightbox-close:hover { transform: scale(1.15); }
+        .lightbox-close:focus { outline: 2px solid var(--gothic-black); }
         .lightbox-nav {
             position: absolute;
             top: 50%; transform: translateY(-50%);
@@ -333,6 +434,7 @@
             transition: background 0.2s;
         }
         .lightbox-nav:hover { background: var(--gold); color: var(--dark-bg); }
+        .lightbox-nav:focus { outline: 2px solid var(--gold); }
         .lightbox-prev { left: -54px; }
         .lightbox-next { right: -54px; }
         .lightbox-caption {
@@ -357,6 +459,7 @@
             color: var(--gold-dim);
             text-decoration: none;
         }
+        .page-footer a:hover { text-decoration: underline; }
 
         /* ── MOBILE ── */
         @media (max-width: 600px) {
@@ -383,89 +486,82 @@
 <body>
 
     <!-- TOP NAV -->
-    <nav class="top-nav">
-        <div class="nav-brand">
-            <img src="./img/logo.jpg" alt="Logo">
-            <span>Weuda Public Library</span>
-        </div>
-        <a href="index.html" class="nav-back">← ආපසු | Back</a>
-    </nav>
+    <header role="banner">
+        <nav class="top-nav" aria-label="Site navigation">
+            <div class="nav-brand">
+                <img src="./img/logo.jpg" alt="Weuda Public Library logo" width="44" height="44">
+                <span>Weuda Public Library</span>
+            </div>
+            <a href="index.html" class="nav-back" aria-label="Return to main library page">← ආපසු | Back</a>
+        </nav>
+    </header>
 
     <!-- HERO -->
-    <header class="hero">
-        <div class="hero-ornament">❧ ✦ ❧</div>
-        <div class="hero-badge">New Arrivals · නව ලැබීම් · புதிய வரவுகள்</div>
-        <h1>නව පොත් එකතුව</h1>
+    <section class="hero" aria-labelledby="newbooks-heading">
+        <div class="hero-ornament" aria-hidden="true">❧ ✦ ❧</div>
+        <div class="hero-badge" aria-label="New arrivals in Sinhala, English and Tamil">New Arrivals · නව ලැබීම් · புதிய வரவுகள்</div>
+        <h1 id="newbooks-heading">නව පොත් එකතුව</h1>
         <p class="hero-sub">"Explore the Newest Additions to Our Collection"</p>
-        <div class="hero-divider">
+        <div class="hero-divider" aria-hidden="true">
             <div class="hero-divider-line"></div>
             <span>📚</span>
             <div class="hero-divider-line"></div>
         </div>
-    </header>
+    </section>
 
     <!-- COUNT STRIP -->
-    <div class="count-strip">
+    <div class="count-strip" role="status" aria-live="polite">
         <span class="count-strip-label">වෑඋඩ මහජන පුස්තකාලය — Weuda Public Library</span>
         <span class="count-strip-num" id="book-count-label">34 New Books</span>
     </div>
 
     <!-- GRID -->
-    <section class="grid-section">
-        <div class="books-grid" id="books-grid"></div>
-    </section>
+    <main id="main-content">
+        <section class="grid-section" aria-label="New book arrivals gallery">
+            <div class="books-grid" id="books-grid" role="list"></div>
+        </section>
+    </main>
 
     <!-- LIGHTBOX -->
-    <div class="lightbox-overlay" id="lightbox" onclick="handleLightboxClick(event)">
+    <div class="lightbox-overlay" id="lightbox"
+         role="dialog" aria-modal="true" aria-label="Book cover viewer"
+         onclick="handleLightboxClick(event)">
         <div class="lightbox-box" id="lb-box">
-            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-            <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1)">‹</button>
-            <button class="lightbox-nav lightbox-next" onclick="lbNav(1)">›</button>
-            <img id="lb-img" src="" alt="">
-            <div class="lightbox-caption" id="lb-caption"></div>
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close book viewer">✕</button>
+            <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1)" aria-label="Previous book">‹</button>
+            <button class="lightbox-nav lightbox-next" onclick="lbNav(1)"  aria-label="Next book">›</button>
+            <img id="lb-img" src="" alt="" loading="lazy">
+            <div class="lightbox-caption" id="lb-caption" aria-live="polite"></div>
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="page-footer">
-        <a href="index.html">← Weuda Public Library</a> &nbsp;·&nbsp; Developed by ElevenX
+    <footer class="page-footer" role="contentinfo">
+        <a href="index.html">← Weuda Public Library</a> &nbsp;·&nbsp;
+        Developed by <a href="https://elevenxsoftwares.vercel.app/" rel="noopener noreferrer">ElevenX</a>
     </footer>
 
     <script>
-    const START   = 1;        // first book to display
-    const MAX     = 200;       // upper probe limit (auto-stops when images run out)
+    const START   = 1;
+    const MAX     = 200;
     const EXTS    = ['jpg','jpeg','png','webp'];
     const grid    = document.getElementById('books-grid');
     let validBooks = [];
     let currentLb  = 0;
 
-    // ── Build grid ──
     function buildGrid() {
-        // First, probe how many images exist from START upwards
-        let probeIdx = START;
-        let settled  = 0;
-        let totalToTry = 0;
-        const tries = {};
+        let settled     = 0;
+        const totalToTry = MAX - START + 1;
+        const tries     = {};
 
-        function startProbing() {
-            // Probe sequentially: once an index fails all exts, stop adding more
-            // But to keep it simple and consistent with original, probe up to MAX
-            totalToTry = MAX - START + 1;
-            for (let i = START; i <= MAX; i++) {
-                tries[i] = { i, found: false, extIdx: 0 };
-                tryLoad(i);
-            }
+        for (let i = START; i <= MAX; i++) {
+            tries[i] = { i, found: false, extIdx: 0 };
+            tryLoad(i);
         }
-
-        startProbing();
 
         function tryLoad(i) {
             const t = tries[i];
-            if (t.extIdx >= EXTS.length) {
-                // All extensions failed – skip (no placeholder for clean look)
-                checkDone();
-                return;
-            }
+            if (t.extIdx >= EXTS.length) { checkDone(); return; }
             const src = `./img/new_books/newbook${i}.${EXTS[t.extIdx]}`;
             const tst = new Image();
             tst.onload  = () => { addCard(i, src); checkDone(); };
@@ -473,39 +569,38 @@
             tst.src = src;
         }
 
-
-
         function addCard(i, src) {
-            const card = document.createElement('div');
-            card.className = 'book-card';
+            const card  = document.createElement('div');
+            card.className    = 'book-card';
             card.style.animationDelay = ((i - START) * 0.04) + 's';
-            card.dataset.idx = i;
+            card.dataset.idx  = i;
+            card.setAttribute('role', 'listitem');
+            card.setAttribute('tabindex', '0');
 
             const inner = document.createElement('div');
-            inner.className = 'book-inner';
+            inner.className   = 'book-inner';
 
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `New Book ${i}`;
+            const img   = document.createElement('img');
+            img.src     = src;
+            img.alt     = `New book arrival No. ${i} – Weuda Public Library`;
             img.loading = 'lazy';
+            img.width   = 200;
             inner.appendChild(img);
             validBooks[i] = src;
 
-            const num = document.createElement('div');
-            num.className = 'book-num';
-            num.textContent = i;
+            const num   = document.createElement('div');
+            num.className     = 'book-num';
+            num.textContent   = i;
+            num.setAttribute('aria-hidden', 'true');
 
             card.appendChild(inner);
             card.appendChild(num);
-            card.onclick = () => openLightbox(i);
+            card.onclick   = () => openLightbox(i);
+            card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); } };
 
-            // Insert in order
             const after = grid.querySelector(`[data-idx="${i + 1}"]`);
-            if (after) {
-                grid.insertBefore(card, after);
-            } else {
-                grid.appendChild(card);
-            }
+            if (after) grid.insertBefore(card, after);
+            else        grid.appendChild(card);
         }
 
         function checkDone() {
@@ -522,11 +617,12 @@
     // ── Lightbox ──
     function openLightbox(i) {
         currentLb = i;
-        document.getElementById('lb-img').src    = validBooks[i];
-        document.getElementById('lb-img').alt    = `New Book ${i}`;
-        document.getElementById('lb-caption').textContent = `Book No. ${i}`;
+        document.getElementById('lb-img').src              = validBooks[i];
+        document.getElementById('lb-img').alt              = `New book arrival No. ${i} – Weuda Public Library`;
+        document.getElementById('lb-caption').textContent  = `Book No. ${i}`;
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
+        document.getElementById('lightbox').focus();
     }
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('open');
@@ -534,7 +630,6 @@
     }
     function lbNav(dir) {
         let next = currentLb + dir;
-        // find next valid
         while (next >= START && next <= MAX && !validBooks[next]) next += dir;
         if (next < START || next > MAX) return;
         openLightbox(next);
